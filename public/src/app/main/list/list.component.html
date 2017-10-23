@@ -1,0 +1,20 @@
+
+<form (submit)="find()">
+Search question: <input type="text" name="search" [(ngModel)]="search.search">
+<input type="submit">
+<!-- {{search | json}} -->
+</form>
+<table>
+    <tr>
+      <th>Question</th>
+      <th>Answers</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let question of questions">
+      <div *ngIf="question.question.toUpperCase().includes(search.search.toUpperCase())">
+      <td>{{question.question}}</td>
+      <td>{{question.answer.length}}</td>
+      <td><a [routerLink]="['detail', question._id]" >Show</a><a [routerLink]="['answer', question._id]" >Answer</a></td>
+    </div>
+    </tr>
+  </table>

@@ -1,0 +1,103 @@
+<h1>Q&A</h1>
+
+<h3>Login</h3>
+<form (submit)="onLogin()" #loginForm=ngForm>
+  <label for="email">Email:</label>
+    <input required
+            type="text"
+            id="email"
+            name="email"
+            [(ngModel)]="user.email"
+            #userLogin_email="ngModel">
+  <label for="password">Password</label>
+    <input required
+            type="text"
+            id="password"
+            name="password"
+            [(ngModel)]="user.password"
+            #userLogin_password="ngModel">
+    <button [disabled]="loginForm.invalid" type="submit" [ngClass]="{'alert-success':loginForm.valid,'alert-danger':loginForm.invalid}">Login</button>
+    <div *ngIf="userLogin_email.errors && (userLogin_email.touched || userLogin_email.dirty)" class="alert alert-danger">
+        Email is required.
+    </div>
+    <div *ngIf="userLogin_password.errors && (userLogin_password.touched || userLogin_password.dirty)" class="alert alert-danger">
+        Password is required.
+    </div>
+    <p>{{logErrs}}</p>
+
+    <!-- <div *ngFor="let error of errors">
+        <div *ngIf="userLogin_password.touched || userLogin_password.dirty || userLogin_email.touched || userLogin_email.dirty" class="alert alert-danger">
+            {{error}}
+        </div>
+    </div> -->
+</form>
+<h3>Registration</h3>
+<form (submit)="onRegister()" #registerForm=ngForm>
+    <label for="first_name">First Name:</label>
+      <input required
+              type="text"
+              id="first_name"
+              name="first_name"
+              [(ngModel)]="newUser.first_name"
+              #newUser_first_name="ngModel">
+    <br>
+    <label for="last_name">Last Name:</label>
+      <input required
+              type="text"
+              id="last_name"
+              name="last_name"
+              [(ngModel)]="newUser.last_name"
+              #newUser_last_name="ngModel">
+    <br>
+    <label for="email">Email:</label>
+      <input required
+              type="text"
+              id="email"
+              name="email"
+              [(ngModel)]="newUser.email"
+              #newUser_email="ngModel">
+    <br>
+    <label for="password">Password</label>
+      <input required
+              type="text"
+              id="password"
+              name="password"
+              [(ngModel)]="newUser.password"
+              #newUser_password="ngModel">
+    <br>
+    <label for=password_confirmation>Password Confirmation:</label>
+      <input required
+              type="text"
+              id="password_confirmation"
+              name="password_confirmation"
+              [(ngModel)]="newUser.password_confirmation"
+              #newUser_password_confirmation="ngModel">
+    <br>
+    <br>
+      <button [disabled]="registerForm.invalid" type="submit" [ngClass]="{'alert-success':registerForm.valid,'alert-danger':registerForm.invalid}">Register</button>
+      <div *ngIf="newUser_first_name.errors" class="alert alert-danger">
+          First Name is required.
+      </div>
+
+      <div *ngIf="newUser_last_name.errors" class="alert alert-danger">
+          Last Name is required.
+      </div>
+
+      <div *ngIf="newUser_email.errors" class="alert alert-danger">
+          Email is required.
+      </div>
+
+      <div *ngIf="newUser_password.errors" class="alert alert-danger">
+          Password is required.
+      </div>
+
+      <div *ngIf="newUser_password_confirmation.errors" class="alert alert-danger">
+          Password Confirmation is required.
+      </div>
+
+      <div *ngFor="let error of regErrs">
+          <div class="alert alert-danger">
+              {{error}}
+          </div>
+      </div>
+  </form>

@@ -1,0 +1,15 @@
+<a [routerLink]= "['/']">Home</a> |
+<a href="/detail/{{question._id}}">Go back to question</a> |
+<a href="" (click)="goLogout()">Logout</a>
+
+<h1>{{question.question}}</h1>
+<h3>{{question.description}}</h3>
+
+
+<form (submit)="onSubmit()">
+  Your Answer: <textarea name="question"cols="30" rows="10" [(ngModel)]="newAnswer.answer"></textarea><br>
+  Supporting Details for your answer(optional): <textarea name="description" cols="30" rows="10" [(ngModel)]="newAnswer.description"></textarea>
+  <input type="submit">
+</form>
+
+{{ newAnswer | json}}

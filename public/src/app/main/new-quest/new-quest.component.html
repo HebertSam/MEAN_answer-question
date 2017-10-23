@@ -1,0 +1,13 @@
+<a [routerLink]= "['/']">Home</a>
+<a href="" (click)="goLogout()">Logout</a>
+
+<h1>New Question</h1>
+
+
+<form (submit)="onSubmit()">
+  Question: <textarea name="question"cols="30" rows="10" [(ngModel)]="newQuestion.question"></textarea><br>
+  Description: <textarea name="description" cols="30" rows="10" [(ngModel)]="newQuestion.description"></textarea>
+  <input type="submit">
+</form>
+
+{{newQuestion | json}}
