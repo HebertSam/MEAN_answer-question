@@ -70,5 +70,4 @@ export class QuestComponent implements OnInit, OnChanges {
       return b.vote - a.vote
     })
   }
-
 }

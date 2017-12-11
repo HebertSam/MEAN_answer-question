@@ -81,6 +81,7 @@ module.exports = {
             if(err){
                 return res.status(500).json("could not find question")
             }
+            console.log(question)
             res.json(question)
         })
     },
